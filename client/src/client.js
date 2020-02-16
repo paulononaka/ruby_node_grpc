@@ -1,5 +1,4 @@
 const PROTO_PATH = `${__dirname}/../protos/discount_calculator.proto`;
-
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 
@@ -9,6 +8,23 @@ const packageDefinition = protoLoader.loadSync(
   },
 );
 const proto = grpc.loadPackageDefinition(packageDefinition);
+
+const express = require('express');
+const http = require('http');
+
+const app = express();
+const server = http.createServer(app);
+const port = '3000';
+
+app.use(express.json());
+app.set('port', port);
+
+function onListening() {
+  console.log(`Listening on ${port}`);
+}
+
+server.on('listening', onListening);
+server.listen(port);
 
 function main() {
   const client = new proto.DiscountCalculator('host.docker.internal:50051', grpc.credentials.createInsecure());

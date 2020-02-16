@@ -15,7 +15,7 @@ docker build -t client .
 # Usage
 
 ```
-docker run client
+docker run -it --pid=host -p 3000:3000 client
 ```
 
 ... or just `rake` if you have Rake and Ruby already installed.
