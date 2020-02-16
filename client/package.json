@@ -31,6 +31,7 @@
     "jest": "^25.1.0"
   },
   "dependencies": {
+    "@grpc/proto-loader": "^0.5.3",
     "grpc": "^1.24.2"
   }
 }
