@@ -1,0 +1,5 @@
+task default: %w[client]
+
+task :client do
+  sh 'docker build -t client . && docker run -it client'
+end

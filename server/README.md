@@ -1,10 +1,10 @@
-# Ruby Server
+# Ruby gRPC Server
 
 > Service 1: Discount calculator
 
 ## Requirements
 
-This application runs on Docker.
+This application runs on [Docker](https://www.docker.com/).
 
 ## Setup
 
@@ -18,11 +18,18 @@ docker build -t server .
 docker run -it -p 50051:50051 server
 ```
 
+... or just `rake` if you have Rake and Ruby already installed.
+
 ## If you want to regenerate the protos
 
+Install grpc-tools:
 ```
 gem install grpc-tools
-grpc_tools_ruby_protoc -I ../client/protos --ruby_out=lib --grpc_out=lib ../client/protos/discount_calculator.proto
+```
+
+Then:
+```
+rake generate_proto
 ```
 
 ## Questions?

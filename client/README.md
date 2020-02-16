@@ -1,10 +1,10 @@
-# Node Client
+# Node gRPC Client
 
-> Service 1: Discount calculator
+> Service 2: Products list
 
 ## Requirements
 
-This application runs on Docker.
+This application runs on [Docker](https://www.docker.com/).
 
 ## Setup
 
@@ -17,6 +17,8 @@ docker build -t client .
 ```
 docker run client
 ```
+
+... or just `rake` if you have Rake and Ruby already installed.
 
 ## Questions?
 
