@@ -1,4 +1,6 @@
+.DS_Store
 .idea
+
 server/.idea
 
 client/.idea
