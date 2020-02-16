@@ -3,6 +3,7 @@
 
 require 'google/protobuf'
 
+require 'google/protobuf/timestamp_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("discount_calculator.proto", :syntax => :proto3) do
     add_message "GetDiscountRequest" do
@@ -13,6 +14,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :first_name, :string, 2
       optional :last_name, :string, 3
+      optional :date_of_birth, :message, 4, "google.protobuf.Timestamp"
     end
     add_message "Product" do
       optional :id, :string, 1
