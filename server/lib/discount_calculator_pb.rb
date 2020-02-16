@@ -13,7 +13,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "server.Product" do
       optional :id, :string, 1
       optional :price_in_cents, :int32, 2
-      optional :last_name, :string, 3
+      optional :title, :string, 3
       optional :description, :string, 4
     end
   end
