@@ -1,0 +1,25 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "Hash challenge",
+  "main": "client.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulononaka/hash_challenge.git"
+  },
+  "keywords": [
+    "hash",
+    "challenge",
+    "grpc",
+    "node"
+  ],
+  "author": "Paulo Henrique Nonaka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulononaka/hash_challenge/issues"
+  },
+  "homepage": "https://github.com/paulononaka/hash_challenge#readme"
+}
