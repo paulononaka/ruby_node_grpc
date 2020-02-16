@@ -1,4 +1,4 @@
-# Ruby Server
+# Node Client
 
 > Service 1: Discount calculator
 
@@ -9,13 +9,13 @@ This application runs on Docker.
 ## Setup
 
 ```
-docker build -t server .
+docker build -t client .
 ```
 
 # Usage
 
 ```
-docker run server
+docker run client
 ```
 
 ## Questions?
