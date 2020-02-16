@@ -5,6 +5,7 @@ class DiscountCalculatorService < DiscountCalculator::Service
     Product.new(id: '1',
                 price_in_cents: 100,
                 title: 'Some product',
-                description: 'Some description')
+                description: 'Some description',
+                discount: Discount.new(pct: 5.5, value_in_cents: 599))
   end
 end

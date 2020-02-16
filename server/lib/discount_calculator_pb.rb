@@ -5,6 +5,10 @@ require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("discount_calculator.proto", :syntax => :proto3) do
+    add_message "GetDiscountRequest" do
+      optional :product_id, :string, 1
+      optional :user_id, :string, 2
+    end
     add_message "User" do
       optional :id, :string, 1
       optional :first_name, :string, 2
@@ -15,9 +19,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :price_in_cents, :int32, 2
       optional :title, :string, 3
       optional :description, :string, 4
+      optional :discount, :message, 5, "Discount"
+    end
+    add_message "Discount" do
+      optional :pct, :float, 1
+      optional :value_in_cents, :int32, 2
     end
   end
 end
 
 User = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("User").msgclass
 Product = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Product").msgclass
+Discount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Discount").msgclass
