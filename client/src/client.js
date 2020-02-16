@@ -9,14 +9,12 @@ const packageDefinition = protoLoader.loadSync(
 );
 const proto = grpc.loadPackageDefinition(packageDefinition);
 
-const express = require('express');
 const http = require('http');
+const app = require('./app');
 
-const app = express();
 const server = http.createServer(app);
 const port = '3000';
 
-app.use(express.json());
 app.set('port', port);
 
 function onListening() {
@@ -38,3 +36,5 @@ function main() {
 }
 
 main();
+
+module.exports = app;
