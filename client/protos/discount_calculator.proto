@@ -1,7 +1,12 @@
 syntax = "proto3";
 
 service DiscountCalculator {
-    rpc GetDiscount(User) returns (Product) {}
+    rpc GetDiscount(GetDiscountRequest) returns (Product) {}
+}
+
+message GetDiscountRequest {
+    string product_id = 1;
+    string user_id = 2;
 }
 
 message User {

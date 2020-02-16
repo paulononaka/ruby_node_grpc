@@ -28,6 +28,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
 end
 
+GetDiscountRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetDiscountRequest").msgclass
 User = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("User").msgclass
 Product = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Product").msgclass
 Discount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Discount").msgclass

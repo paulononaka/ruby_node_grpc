@@ -12,9 +12,10 @@ const proto = grpc.loadPackageDefinition(packageDefinition);
 
 function main() {
   const client = new proto.DiscountCalculator('host.docker.internal:50051', grpc.credentials.createInsecure());
-  const user = { id: '1', first_name: 'Paulo', last_name: 'Nonaka' };
 
-  client.getDiscount(user, (err, response) => {
+  const getDiscountRequest = { product_id: '5000', user_id: '123' };
+
+  client.getDiscount(getDiscountRequest, (err, response) => {
     console.log('Error:', err);
     console.log('Response:', response);
   });

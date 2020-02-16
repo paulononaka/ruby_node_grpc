@@ -13,7 +13,7 @@ module DiscountCalculator
     self.unmarshal_class_method = :decode
     self.service_name = 'DiscountCalculator'
 
-    rpc :GetDiscount, User, Product
+    rpc :GetDiscount, GetDiscountRequest, Product
   end
 
   Stub = Service.rpc_stub_class
