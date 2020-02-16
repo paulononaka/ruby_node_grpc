@@ -1,5 +1,4 @@
 syntax = "proto3";
-package server;
 
 service DiscountCalculator {
     rpc GetDiscount(User) returns (Product) {}
