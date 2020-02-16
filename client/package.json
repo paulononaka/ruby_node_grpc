@@ -2,9 +2,11 @@
   "name": "client",
   "version": "1.0.0",
   "description": "Hash challenge",
-  "main": "client.js",
+  "main": "src/client.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src/",
+    "lint:fix": "eslint --fix src/"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,9 @@
   },
   "homepage": "https://github.com/paulononaka/hash_challenge#readme",
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
     "jest": "^25.1.0"
   },
   "dependencies": {
