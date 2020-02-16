@@ -1,0 +1,19 @@
+syntax = "proto3";
+package server;
+
+service DiscountCalculator {
+    rpc GetDiscount(User) returns (Product) {}
+}
+
+message User {
+  string id = 1;
+  string first_name = 2;
+  string last_name = 3;
+}
+
+message Product {
+  string id = 1;
+  int32 price_in_cents = 2;
+  string last_name = 3;
+  string description = 4;
+}
