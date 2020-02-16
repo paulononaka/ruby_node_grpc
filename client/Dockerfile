@@ -8,4 +8,4 @@ RUN yarn install
 
 COPY . .
 
-CMD ["node", "./client.js"]
+CMD ["node", "./src/client.js"]

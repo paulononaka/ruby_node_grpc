@@ -9,3 +9,5 @@ RUN bundle install
 COPY . .
 
 CMD ["ruby", "./server.rb"]
+
+EXPOSE 50051
