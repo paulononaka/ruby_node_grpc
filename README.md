@@ -1,12 +1,25 @@
-![CI](https://github.com/paulononaka/ruby_node_grpc/workflows/ci.js%20CI/badge.svg)
+[![mailto:paulononaka@email.com](https://img.shields.io/badge/contact-@paulononaka-blue.svg?style=flat)](mailto:paulononaka@email.com)
+![CI](https://github.com/paulononaka/ruby_node_grpc/workflows/CI/badge.svg)
 
 <hr />
 <h2 align="center">
-  ✨ Ruby & Node & gRPC ✨
+  ✨ Ruby & Node with gRPC ✨
 </h2>
 <hr /> 
 
-> Two microservices that together displays a product list with custom discounts per user. The first one is a gRPC server made in Ruby (server folder) and second one is a gRPC client made in node (client folder). The first service receive two RPC arguments and answers with the discount. The second one exposes a HTTP endpoint GET /product that returns a list of products and its discounts for a specific user.
+Two microservices that communicates through [gRPC](https://grpc.io) that together displays a product list with custom discounts per user. 
+
+## Server
+
+> A gRPC server made in Ruby (server folder). 
+
+The server service receive two RPC arguments and answers with the discount.
+
+## Client
+
+> A gRPC client made in node (client folder).
+
+The gRPC client consumes the gRPC server and exposes a HTTP endpoint GET /product that returns a list of products and its discounts for a specific user.
 
 # Usage
 
