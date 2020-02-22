@@ -17,8 +17,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn install
-    - run: npm test
-    - working-directory: client
+    - run: |
+        yarn install
+        npm test
+      working-directory: client
       env:
         CI: true
