@@ -1,11 +1,24 @@
-const request = require('supertest');
-const app = require('../../app');
+const sinon = require('sinon');
+const service = require('../../service/service');
+const getProductEndpoint = require('./index');
 
-describe('/product endpoint', () => {
-  it('should return a list of product', async () => {
-    await request(app)
-      .get('/product')
-      .expect('Content-Type', /json/)
-      .expect(200, [{ product_id: 'Hello world' }]);
+const mockResponse = () => {
+  const res = {};
+  res.json = jest.fn().mockReturnValue(res);
+  return res;
+};
+
+describe('getProductEndpoint', () => {
+  afterEach(() => {
+    sinon.restore();
+  });
+
+  it('should return the response of service.getDiscount()', async () => {
+    const res = mockResponse();
+    sinon.stub(service, 'getDiscount').resolves('ok');
+
+    await getProductEndpoint(null, res);
+
+    expect(res.json).toHaveBeenCalledWith('ok');
   });
 });

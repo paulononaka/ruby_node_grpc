@@ -1,8 +1,8 @@
 const request = require('supertest');
 const app = require('./app');
 
-describe('/product endpoint', () => {
-  it('should return a list of products', async () => {
+describe('app', () => {
+  it('/ endpoint should return 200', async () => {
     await request(app)
       .get('/')
       .expect(200)

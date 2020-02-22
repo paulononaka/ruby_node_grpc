@@ -1,7 +1,7 @@
 task default: %w[server]
 
 task :generate_proto do
-  sh 'grpc_tools_ruby_protoc -I ../client/protos --ruby_out=lib --grpc_out=lib ../client/protos/discount_calculator.proto'
+  sh 'grpc_tools_ruby_protoc -I ../client/src/protos --ruby_out=lib --grpc_out=lib ../client/src/protos/discount_calculator.proto'
 end
 
 task :server do

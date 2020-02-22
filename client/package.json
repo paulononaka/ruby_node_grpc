@@ -2,9 +2,9 @@
   "name": "client",
   "version": "1.0.0",
   "description": "Hash challenge",
-  "main": "src/client.js",
+  "main": "client.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "lint": "eslint src/",
     "lint:fix": "eslint --fix src/"
   },

@@ -1,10 +1,10 @@
 const express = require('express');
-
-const rootRouter = require('./api/router');
+const getInitialEndpoint = require('./api/index');
+const getProductEndpoint = require('./api/products/index');
 
 const app = express();
 app.use(express.json());
-
-app.use('/', rootRouter);
+app.get('/', getInitialEndpoint);
+app.get('/product', getProductEndpoint);
 
 module.exports = app;

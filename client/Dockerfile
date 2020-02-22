@@ -8,6 +8,6 @@ RUN yarn install
 
 COPY . .
 
-CMD ["node", "./src/client.js"]
+CMD ["node", "./client.js"]
 
 EXPOSE 3000

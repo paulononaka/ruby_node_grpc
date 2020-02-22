@@ -1,11 +1,17 @@
-const request = require('supertest');
-const app = require('../app');
+const getInitialEndpoint = require('./index');
 
-describe('/ endpoint', () => {
-  it('should return Ok! message', async () => {
-    await request(app)
-      .get('/')
-      .expect(200)
-      .expect('Ok!');
+const mockResponse = () => {
+  const res = {};
+  res.send = jest.fn();
+  return res;
+};
+
+describe('getInitialEndpoint', () => {
+  it('should return Ok!', async () => {
+    const res = mockResponse();
+
+    getInitialEndpoint(null, res);
+
+    expect(res.send).toHaveBeenCalledWith('Ok!');
   });
 });
