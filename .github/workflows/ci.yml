@@ -1,0 +1,37 @@
+name: CI
+
+on: [push]
+
+jobs:
+
+  node:
+    name: gRPC Client (Node)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: |
+        yarn install
+        npm test
+      working-directory: client
+      env:
+        CI: true
+
+  ruby:
+    name: gRPC Server (Ruby)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - name: Build and test with Rake
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rspec
+        working-directory: server
