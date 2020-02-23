@@ -1,10 +1,8 @@
 const protoClient = require('../protos/proto_client');
 
-function getDiscount() {
-  const getDiscountRequest = { product_id: '1', user_id: '123' };
-
+function getDiscount(discountRequest) {
   return new Promise(((fulfilled, rejected) => {
-    protoClient.getDiscount(getDiscountRequest, (err, response) => {
+    protoClient.getDiscount(discountRequest, (err, response) => {
       if (err !== null) {
         rejected(err);
       }

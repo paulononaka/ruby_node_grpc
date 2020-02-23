@@ -5,6 +5,7 @@ const getProductEndpoint = require('./index');
 const mockResponse = () => {
   const res = {};
   res.json = jest.fn().mockReturnValue(res);
+  res.status = jest.fn().mockReturnValue(res);
   return res;
 };
 
@@ -20,5 +21,19 @@ describe('getProductEndpoint', () => {
     await getProductEndpoint(null, res);
 
     expect(res.json).toHaveBeenCalledWith('ok');
+  });
+
+  it('should return the response even if service.getDiscount() fails', async () => {
+    const res = mockResponse();
+    sinon.stub(service, 'getDiscount').throws();
+
+    let message;
+    try {
+      await getProductEndpoint(null, res);
+    } catch (e) {
+      message = e;
+    }
+
+    expect(message).not.toBeTruthy();
   });
 });
