@@ -6,31 +6,33 @@ require 'google/protobuf'
 require 'google/protobuf/timestamp_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("discount_calculator.proto", :syntax => :proto3) do
-    add_message "GetDiscountRequest" do
+    add_message "proto.GetDiscountRequest" do
       optional :product_id, :string, 1
       optional :user_id, :string, 2
     end
-    add_message "User" do
+    add_message "proto.User" do
       optional :id, :string, 1
       optional :first_name, :string, 2
       optional :last_name, :string, 3
       optional :date_of_birth, :message, 4, "google.protobuf.Timestamp"
     end
-    add_message "Product" do
+    add_message "proto.Product" do
       optional :id, :string, 1
       optional :price_in_cents, :int32, 2
       optional :title, :string, 3
       optional :description, :string, 4
-      optional :discount, :message, 5, "Discount"
+      optional :discount, :message, 5, "proto.Discount"
     end
-    add_message "Discount" do
+    add_message "proto.Discount" do
       optional :pct, :float, 1
       optional :value_in_cents, :int32, 2
     end
   end
 end
 
-GetDiscountRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetDiscountRequest").msgclass
-User = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("User").msgclass
-Product = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Product").msgclass
-Discount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Discount").msgclass
+module Proto
+  GetDiscountRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("proto.GetDiscountRequest").msgclass
+  User = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("proto.User").msgclass
+  Product = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("proto.Product").msgclass
+  Discount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("proto.Discount").msgclass
+end

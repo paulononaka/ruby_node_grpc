@@ -8,6 +8,6 @@ const packageDefinition = protoLoader.loadSync(
   },
 );
 const protoClient = gRPC.loadPackageDefinition(packageDefinition);
-const client = new protoClient.DiscountCalculator('host.docker.internal:50051', gRPC.credentials.createInsecure());
+const client = new protoClient.proto.DiscountCalculator('host.docker.internal:50051', gRPC.credentials.createInsecure());
 
 module.exports = client;

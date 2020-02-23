@@ -1,11 +1,16 @@
 require 'discount_calculator_services_pb'
+require 'models/product'
 
-class DiscountCalculatorService < DiscountCalculator::Service
-  def get_discount(getDiscountRequest, _call)
-    Product.new(id: '1',
-                price_in_cents: 100,
-                title: 'Some product',
-                description: 'Some description',
-                discount: Discount.new(pct: 5.5, value_in_cents: 599))
+class DiscountCalculatorService < Proto::DiscountCalculator::Service
+  def get_discount(discount_request, _call)
+    product = Product.find(discount_request.product_id)
+
+    return Proto::Product.new if (product.nil?)
+
+    Proto::Product.new(id: product.id.to_s,
+                price_in_cents: product.price_in_cents,
+                title: product.title,
+                description: product.description,
+                discount: Proto::Discount.new(pct: 1, value_in_cents: 1000))
   end
 end
