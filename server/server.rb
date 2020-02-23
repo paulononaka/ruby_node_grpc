@@ -7,7 +7,7 @@ require 'ruson'
 require 'discount_calculator_service'
 
 def main
-  Ruson.output_folder = './data/'
+  Ruson.output_folder = '../data/'
   s = GRPC::RpcServer.new
   s.add_http2_port('0.0.0.0:50051', :this_port_is_insecure)
   s.handle(DiscountCalculatorService.new)

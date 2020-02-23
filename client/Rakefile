@@ -1,5 +1,0 @@
-task default: %w[client]
-
-task :client do
-  sh 'docker build -t client . && docker run -it --pid=host -p 3000:3000 client'
-end

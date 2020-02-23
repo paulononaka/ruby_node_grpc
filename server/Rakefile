@@ -1,9 +1,0 @@
-task default: %w[server]
-
-task :generate_proto do
-  sh 'grpc_tools_ruby_protoc -I ../client/src/protos --ruby_out=lib --grpc_out=lib ../client/src/protos/discount_calculator.proto'
-end
-
-task :server do
-  sh 'docker build -t server . && docker run -it -p 50051:50051 server'
-end
