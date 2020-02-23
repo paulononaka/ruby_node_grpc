@@ -59,6 +59,24 @@ RSpec.describe DiscountCalculatorService do
           Timecop.freeze(Time.local(1990, 11, 25))
         end
 
+        context "there is a user in the database celebrating an anniversary" do
+          before do
+            @user = User.create(id: '1',
+                                first_name: 'Bart',
+                                last_name: 'Simpson',
+                                date_of_birth: Date.today - 10.years)
+          end
+
+          it "no product discount can be bigger than 10%" do
+            discount_request = Proto::GetDiscountRequest.new(product_id: @product.id, user_id: @user.id)
+
+            result = @discount_calculator.get_discount(discount_request, nil)
+
+            expect(result.discount.pct).to eq(10)
+            expect(result.discount.value_in_cents).to eq(180)
+          end
+        end
+
         it "the product has 10% discount" do
           discount_request = Proto::GetDiscountRequest.new(product_id: @product.id, user_id: '999')
 
@@ -83,6 +101,7 @@ RSpec.describe DiscountCalculatorService do
         before do
           Timecop.freeze(Time.local(1990, 11, 20))
         end
+
         it "the product has no discount if can not find user and it is not Black Friday" do
           FileUtils.rm_rf('./spec/data/Users/')
           discount_request = Proto::GetDiscountRequest.new(product_id: @product.id, user_id: '999')
