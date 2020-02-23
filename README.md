@@ -13,7 +13,7 @@ Two microservices that communicates through [gRPC](https://grpc.io) that togethe
 
 > A gRPC server made in Ruby (server folder). 
 
-The server service receive two RPC arguments and answers with the discount.
+The server service receives two RPC arguments and answers with the discount.
 
 ## Client
 
@@ -24,6 +24,9 @@ The gRPC client consumes the gRPC server and exposes a HTTP endpoint GET /produc
 # Usage
 
 > More of each service on its README inside each folder.
+
+- More about the [gRPC client](https://github.com/paulononaka/ruby_node_grpc/tree/master/client)
+- More about the [gRPC Server](https://github.com/paulononaka/ruby_node_grpc/tree/master/server)
 
 ## Questions?
 

@@ -1,0 +1,15 @@
+# Adds Ruson gem in order to manage lightweight data
+
+Date: 2020-02-23
+​
+## Decision
+
+Since the problem requires just read-only data and doesn't require complex queries we decided to go with 
+a lightweight Gem to manage stored data through json. Json allows us to keep the data inside the repo
+and doesn't force us to have to manage/install a separated database management system, simplifying a lot 
+the solution and allowing us to focus on what really matters by now.
+ 
+Besides, all the queries required by the problem are done by id, so this Gem, Ruson, seems to be a elegant
+solution for searching Jsons with O(1) complexity. Last, but not least, the way the code is written
+allows us to easily move from this to a more complex and complete document-oriented database if necessary,
+following principles of [Building Evolutionary Architectures](https://www.thoughtworks.com/books/building-evolutionary-architectures).

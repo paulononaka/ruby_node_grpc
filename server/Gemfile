@@ -1,6 +1,7 @@
 source 'https://rubygems.org/'
 
 gem 'grpc'
+gem 'ruson'
 
 group :test do
   gem 'rspec'
