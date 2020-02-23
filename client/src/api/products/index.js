@@ -1,3 +1,4 @@
+const repository = require('../../repository/repository');
 const service = require('../../service/service');
 
 async function getProductEndpoint(req, res) {
@@ -6,7 +7,7 @@ async function getProductEndpoint(req, res) {
   try {
     res.json(await service.getDiscount(discountRequest));
   } catch (e) {
-    res.status(500).json(e);
+    res.json(repository.getProducts());
   }
 }
 

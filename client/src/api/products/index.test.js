@@ -1,6 +1,7 @@
 const sinon = require('sinon');
 const service = require('../../service/service');
 const getProductEndpoint = require('./index');
+const repository = require('../../repository/repository');
 
 const mockResponse = () => {
   const res = {};
@@ -35,5 +36,15 @@ describe('getProductEndpoint', () => {
     }
 
     expect(message).not.toBeTruthy();
+  });
+
+  it('returns the product list but with zero discounts for the affected products if service 1 fails, ', async () => {
+    const res = mockResponse();
+    sinon.stub(service, 'getDiscount').throws();
+    sinon.stub(repository, 'getProducts').returns(['products']);
+
+    await getProductEndpoint(null, res);
+
+    expect(res.json).toHaveBeenCalledWith(['products']);
   });
 });
