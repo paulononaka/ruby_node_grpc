@@ -20,15 +20,18 @@ class DiscountCalculatorService < Proto::DiscountCalculator::Service
   private
 
   def discount(product, user)
-    no_discount = Proto::Discount.new(pct: 0, value_in_cents: 0)
+    discount = Proto::Discount.new(pct: 0, value_in_cents: 0)
 
-    return no_discount if (user.nil?)
-
-    if user.date_of_birth.day == Date.today.day and
-        user.date_of_birth.month == Date.today.month
-      Proto::Discount.new(pct: 5, value_in_cents: product.price_in_cents * 0.95)
-    else
-      no_discount
+    if Date.today.day == 25 and Date.today.month == 11
+      discount = Proto::Discount.new(pct: 10, value_in_cents: product.price_in_cents * 0.90)
     end
+
+    return discount if (user.nil?)
+
+    if Date.today.day == user.date_of_birth.day and Date.today.month == user.date_of_birth.month
+      discount = Proto::Discount.new(pct: 5, value_in_cents: product.price_in_cents * 0.95)
+    end
+
+    discount
   end
 end

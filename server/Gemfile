@@ -4,6 +4,7 @@ gem 'grpc'
 gem 'ruson'
 
 group :test do
+  gem 'timecop'
   gem 'rspec'
   gem 'rake'
 end
