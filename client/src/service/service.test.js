@@ -1,5 +1,5 @@
 const sinon = require('sinon');
-const protoClient = require('../protos/proto_client');
+const protoClient = require('./proto_client');
 const service = require('./service');
 
 describe('service.getDiscount()', () => {

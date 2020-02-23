@@ -1,4 +1,4 @@
-const protoClient = require('../protos/proto_client');
+const protoClient = require('./proto_client');
 
 function getDiscount(discountRequest) {
   return new Promise(((fulfilled, rejected) => {

@@ -19,15 +19,15 @@ This application relies on [Docker](https://www.docker.com/).
 docker-compose build
 ```
 
-# Usage
+## Usage
 
 ```
 docker-compose up
 ```
 
-## Server
+# Server
 
-> A gRPC server made in Ruby (server folder). 
+A gRPC server made in Ruby (server folder). 
 
 The server service receives two RPC arguments and answers with the discount.
 
@@ -43,9 +43,9 @@ Then:
 rake generate_proto
 ```
 
-## Client
+# Client
 
-> A gRPC client made in node (client folder).
+A gRPC client made in node (client folder).
 
 The gRPC client consumes the gRPC server and exposes a HTTP endpoint GET /product that returns a list of products and its discounts for a specific user.
 

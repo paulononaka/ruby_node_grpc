@@ -1,4 +1,4 @@
-const PROTO_PATH = `${__dirname}/discount_calculator.proto`;
+const PROTO_PATH = `${__dirname}/../../../protos/discount_calculator.proto`;
 const gRPC = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 
