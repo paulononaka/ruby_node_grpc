@@ -44,7 +44,10 @@ class DiscountCalculatorService < Proto::DiscountCalculator::Service
   end
 
   def create_discount(product, pct)
-    return Proto::Discount.new(pct: 0, value_in_cents: 0) if pct == 0
-    Proto::Discount.new(pct: pct, value_in_cents: product.price_in_cents * (1 - pct*0.01))
+    if pct == 0 or product.price_in_cents == 0
+      Proto::Discount.new(pct: 0, value_in_cents: 0)
+    else
+      Proto::Discount.new(pct: pct, value_in_cents: (product.price_in_cents * (1 - pct*0.01)).truncate)
+    end
   end
 end
