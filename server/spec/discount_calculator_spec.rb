@@ -1,6 +1,7 @@
 require './lib/discount_calculator_service'
 require './lib/discount_calculator_pb'
 require 'ruson'
+require 'date'
 
 RSpec.describe DiscountCalculatorService do
 
@@ -19,7 +20,7 @@ RSpec.describe DiscountCalculatorService do
 
   context "when calling get_discount" do
     it "returns a proto Proto::Product" do
-      discount_request = Proto::GetDiscountRequest.new(product_id: '1', user_id: '123')
+      discount_request = Proto::GetDiscountRequest.new(product_id: @product.id, user_id: '123')
 
       result = @discount_calculator.get_discount(discount_request, nil)
 
@@ -27,7 +28,7 @@ RSpec.describe DiscountCalculatorService do
     end
 
     it "finds and returns the product passed by the request parameters" do
-      discount_request = Proto::GetDiscountRequest.new(product_id: '1', user_id: '123')
+      discount_request = Proto::GetDiscountRequest.new(product_id: @product.id, user_id: '123')
 
       result = @discount_calculator.get_discount(discount_request, nil)
 
@@ -44,6 +45,33 @@ RSpec.describe DiscountCalculatorService do
 
       expect(result).to be_a_kind_of(Proto::Product)
       expect(result.id).to be_empty
+    end
+
+    it "the product has no discount if can not find user" do
+      discount_request = Proto::GetDiscountRequest.new(product_id: @product.id, user_id: '999')
+
+      result = @discount_calculator.get_discount(discount_request, nil)
+
+      expect(result.discount.pct).to eq(0)
+      expect(result.discount.value_in_cents).to eq(0)
+    end
+
+    context "there is a user in the database celebrating an anniversary" do
+      before do
+        @user = User.create(id: '1',
+                            first_name: 'Bart',
+                            last_name: 'Simpson',
+                            date_of_birth: Date.today - 10.years)
+      end
+
+      it "the product has 5% discount if it's the user's birthday" do
+        discount_request = Proto::GetDiscountRequest.new(product_id: @product.id, user_id: @user.id)
+
+        result = @discount_calculator.get_discount(discount_request, nil)
+
+        expect(result.discount.pct).to eq(5)
+        expect(result.discount.value_in_cents).to eq(190)
+      end
     end
   end
 end
