@@ -15,13 +15,19 @@ describe('getProductEndpoint', () => {
     sinon.restore();
   });
 
-  it('should return the response of service.getDiscount()', async () => {
+  it('should return the response of all service.getDiscount() promises', async () => {
     const res = mockResponse();
-    sinon.stub(service, 'getDiscount').resolves('ok');
+    sinon.stub(service, 'getDiscount')
+      .onFirstCall()
+      .resolves('first promise')
+      .onSecondCall()
+      .resolves('second promise');
+
+    sinon.stub(repository, 'getProducts').returns([{ id: 1 }, { id: 2 }]);
 
     await getProductEndpoint(null, res);
 
-    expect(res.json).toHaveBeenCalledWith('ok');
+    expect(res.json).toHaveBeenCalledWith(['first promise', 'second promise']);
   });
 
   it('should return the response even if service.getDiscount() fails', async () => {
