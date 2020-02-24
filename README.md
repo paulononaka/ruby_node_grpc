@@ -82,13 +82,13 @@ client
 
 `GET /` - Health check
 
-```text
+```
 Ok!
 ```
 
 `GET /product?userId=1` - Returns a list of products and its discounts for a specific user.
 
-```json
+```
 [
   {
     id: "1",
