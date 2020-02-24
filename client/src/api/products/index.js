@@ -4,10 +4,11 @@ const service = require('../../service/service');
 async function getProductEndpoint(req, res) {
   const originalProducts = repository.getProducts();
   const promises = [];
+  const { userId } = req.query;
 
   try {
     originalProducts.forEach((originalProduct) => {
-      const discountRequest = { product_id: originalProduct.id, user_id: '1' };
+      const discountRequest = { product_id: originalProduct.id, user_id: userId };
       promises.push(service.getDiscount(discountRequest));
     });
 
