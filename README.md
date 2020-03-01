@@ -112,7 +112,3 @@ Ok!
   }
 ]
 ```
-
-## Questions?
-
->I'm glad to answer, just ping me via email paulononaka@gmail.com 😄
